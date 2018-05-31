@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TieRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,11 @@ class TieRequest extends FormRequest
     public function rules()
     {
         return [
-            'class'=>'required',
-            'title'=>'required',
-            'content'=>'required'
+            'mobile'=>[
+                'required',
+//                'regex:/13[123569]{1}\d{8}|15[1235689]\d{8}|188\d{8}/',  // 正则表达式判断手机 号格式
+            ],
+            'password'=>'required|min:6|max:18',
         ];
     }
 }
