@@ -51,7 +51,7 @@ class LoginController extends Controller
                                 'email' => $user->email,
                             ]);
                             // 跳转
-                            return redirect()->route('index.index');
+                            return redirect()->route('index');
                         }
                         else
                         {
@@ -73,7 +73,7 @@ class LoginController extends Controller
                     $req->session()->flush();
 
 
-                    return redirect()->route('index.index');
+                    return redirect()->route('index');
     }
 
 

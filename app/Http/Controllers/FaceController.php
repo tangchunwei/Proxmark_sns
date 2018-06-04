@@ -54,7 +54,7 @@ class FaceController extends Controller
                 'smface' => $smname,
                 'bgface' => $bgname,
             ]);
-            return redirect()->route('index.index');
+            return redirect()->route('index');
         }
     }
 

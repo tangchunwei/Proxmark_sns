@@ -40,7 +40,6 @@ Route::get('/sendmobilecode', 'RegistController@sendmobilecode')->name('ajax-sen
 Route::get('/login', 'LoginController@login')->name('login');
 // 处理登录表单
 Route::post('/login', 'LoginController@dologin')->name('dologin');
-<<<<<<< HEAD
 
 // 帖子专栏
 Route::get('/information/{class}','TieController@tie_index')->name('information');
@@ -62,9 +61,7 @@ Route::get('/jingtie/{class}','TieController@jingtie')->name('jingtie');
 
 // 帖子详情
 Route::get('/tie_detail/{id}','TieController@tie_detail')->name('tie_detail');
-=======
 //退出登录
 // 退出
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
->>>>>>> 1328586d1b992462d6aefd612258e3c8e7802d85
