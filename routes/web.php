@@ -1,8 +1,25 @@
 <?php
 
 // 显示主页
+
 Route::get('/','IndexController@index')->name('index');
 Route::get('tie_index','IndexController@tie_index')->name('tie_index');
+
+
+
+//显示个人设置界面
+Route::get('/set','UserController@set')->name('user.set');
+//显示个人主页界面
+Route::get('/home','UserController@home')->name('user.home');
+//显示用户中心界面
+Route::get('/userIndex','UserController@userIndex')->name('user.index');
+//显示用户信息界面
+Route::get('/message','UserController@message')->name('user.message');
+//显示用户邮箱激活界面
+Route::get('/activate','UserController@activate')->name('user.activate');
+//修改头像
+Route::post("/face",'FaceController@face')->name('setface');
+
 
 // 发表新帖
 Route::get('/tie_add','TieController@add')->name('tie_add');
@@ -23,6 +40,7 @@ Route::get('/sendmobilecode', 'RegistController@sendmobilecode')->name('ajax-sen
 Route::get('/login', 'LoginController@login')->name('login');
 // 处理登录表单
 Route::post('/login', 'LoginController@dologin')->name('dologin');
+<<<<<<< HEAD
 
 // 帖子专栏
 Route::get('/information/{class}','TieController@tie_index')->name('information');
@@ -44,3 +62,9 @@ Route::get('/jingtie/{class}','TieController@jingtie')->name('jingtie');
 
 // 帖子详情
 Route::get('/tie_detail/{id}','TieController@tie_detail')->name('tie_detail');
+=======
+//退出登录
+// 退出
+Route::get('/logout', 'LoginController@logout')->name('logout');
+
+>>>>>>> 1328586d1b992462d6aefd612258e3c8e7802d85

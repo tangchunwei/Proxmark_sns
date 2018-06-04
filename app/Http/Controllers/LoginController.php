@@ -47,9 +47,11 @@ class LoginController extends Controller
                             session([
                                 'id' => $user->id,
                                 'mobile' => $user->mobile,
+                                'name' => $user->name,
+                                'email' => $user->email,
                             ]);
                             // 跳转
-                            return redirect()->route('regist');
+                            return redirect()->route('index.index');
                         }
                         else
                         {
@@ -64,4 +66,16 @@ class LoginController extends Controller
                         return back()->withErrors('手机号不存在！');
                     }
     }
+    //退出登录
+    public function logout(Request $req) {
+
+                    //  清空SESSION
+                    $req->session()->flush();
+
+
+                    return redirect()->route('index.index');
+    }
+
+
+
 }
