@@ -16,13 +16,15 @@
           <a href="#signin" class="layui-hide-sm layui-show-xs-block fly-right" id="LAY_goSignin" style="color: #FF5722;">去签到</a>
         </div>
         <ul class="fly-list">
+        @foreach($top4 as $t4)
           <li>
             <a href="user/home.html" class="fly-avatar">
               <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
             </a>
             <h2>
-              <a class="layui-badge">动态</a>
-              <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
+              <a class="layui-badge">{{ $t4->class }}</a>
+              <a class="layui-badge layui-bg-green">{{ $t4->type }}</a>
+              <a href="{{ route('tie_detail',['id'=>($t4->id)]) }}">{{ $t4->title }}</a>
             </h2>
             <div class="fly-list-info">
               <a href="user/home.html" link>
@@ -30,7 +32,7 @@
                 <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
                 <i class="layui-badge fly-badge-vip">VIP3</i>
               </a>
-              <span>刚刚</span>
+              <span>{{ $t4->created_at }}</span>
               
               <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>
               <span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>
@@ -39,105 +41,16 @@
               </span>
             </div>
             <div class="fly-list-badge">
-              <!--
+              @if($t4->is_top=="1")
               <span class="layui-badge layui-bg-black">置顶</span>
+              @endif
+              @if($t4->is_jing=="1")
               <span class="layui-badge layui-bg-red">精帖</span>
-              -->
+              @endif
             </div>
           </li>
-          <li>
-            <a href="user/home.html" class="fly-avatar">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
-            </a>
-            <h2>
-              <a class="layui-badge">公告</a>
-              <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-            </h2>
-            <div class="fly-list-info">
-              <a href="user/home.html" link>
-                <cite>贤心</cite>
-                <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-              </a>
-              <span>2017-11-30</span>
-              
-              <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>
-              <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-              <span class="fly-list-nums"> 
-                <i class="iconfont icon-pinglun1" title="回答"></i> 66
-              </span>
-            </div>
-            <div class="fly-list-badge">
-              <!--
-              <span class="layui-badge layui-bg-black">置顶</span>
-              <span class="layui-badge layui-bg-red">精帖</span>
-              -->
-            </div>
-          </li>
-          <li>
-            <a href="user/home.html" class="fly-avatar">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
-            </a>
-            <h2>
-              <a class="layui-badge">公告</a>
-              <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-            </h2>
-            <div class="fly-list-info">
-              <a href="user/home.html" link>
-                <cite>贤心</cite>
-                <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-              </a>
-              <span>刚刚</span>
-              
-              <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>
-              <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-              <span class="fly-list-nums"> 
-                <i class="iconfont icon-pinglun1" title="回答"></i> 66
-              </span>
-            </div>
-            <div class="fly-list-badge">
-              <!--
-              <span class="layui-badge layui-bg-black">置顶</span>
-              <span class="layui-badge layui-bg-red">精帖</span>
-              -->
-            </div>
-          </li>
-          <li>
-            <a href="user/home.html" class="fly-avatar">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
-            </a>
-            <h2>
-              <a class="layui-badge">公告</a>
-              <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-            </h2>
-            <div class="fly-list-info">
-              <a href="user/home.html" link>
-                <cite>贤心</cite>
-                <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-              </a>
-              <span>刚刚</span>
-              
-              <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>
-              <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-              <span class="fly-list-nums"> 
-                <i class="iconfont icon-pinglun1" title="回答"></i> 66
-              </span>
-            </div>
-            <div class="fly-list-badge">
-              <!--
-              <span class="layui-badge layui-bg-black">置顶</span>
-              <span class="layui-badge layui-bg-red">精帖</span>
-              -->
-            </div>
-          </li>
+        @endforeach
+          
         </ul>
       </div>
 
@@ -158,57 +71,18 @@
           <a href="{{ route('tie_list',['type'=>'提问','is_jing'=>' ']) }}" class="tie_list">提问</a>
           <span class="fly-mid"></span>
           <a href="{{ route('tie_list',['type'=>'分享','is_jing'=>'1']) }}" class="tie_list">精华</a>
-          <span class="fly-filter-right layui-hide-xs">
-            <a href="/tie_list?1" class="layui-this">按最新</a>
-            <span class="fly-mid"></span>
-            <a href="?0">按热议</a>
-          </span>
+        
         </div>
  
 
 
-        <ul class="fly-list" id="tie_list">          
-          <li class="tie_zi">
-            <a href="user/home.html" class="fly-avatar">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
-            </a>
-            <h2>
-              <a class="layui-badge">分享</a>
-              <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-            </h2>
-            <div class="fly-list-info">
-              <a href="user/home.html" link>
-                <cite>贤心</cite>
-                <!--
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
-                -->
-              </a>
-              <span>刚刚</span>     
-              <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>
-              <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->
-              <span class="fly-list-nums"> 
-                <i class="iconfont icon-pinglun1" title="回答"></i> 66
-              </span>
-            </div>
-            <div class="fly-list-badge">
-              <!--<span class="layui-badge layui-bg-red">精帖</span>-->
-            </div>
-          </li>
+        <ul class="fly-list" id="tie_list">    
           
         </ul>
    
         
 
 
-
-
-
-        <div style="text-align: center">
-          <div class="laypage-main">
-            <a href="jie/index.html" class="laypage-next">更多求解</a>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -354,52 +228,168 @@ layui.config({
 
     $(function(){
 
-        $(".tie_list").click(function(e){
+      // 前端防XSS攻击
+      function htmlspecialchars(str) {
 
+          var s = "";
+          if (str.length == 0) return "";
+          for   (var i=0; i<str.length; i++)
+          {
+            switch (str.substr(i,1))
+            {
+              case "<": s += "&lt;"; break;
+              case ">": s += "&gt;"; break;
+              case "&": s += "&amp;"; break;
+              case " ":
+                if(str.substr(i + 1, 1) == " "){
+                  s += " &nbsp;";
+                  i++;
+                } else s += " ";
+                break;
+              case "\"": s += "&quot;"; break;
+              case "\n": s += "<br>"; break;
+              default: s += str.substr(i,1); break;
+            }
+          }
+          return s;
+        }
+
+        var disallow_load = true;  // 是否不允许加载
+		    var ajax_tie_url = "{{ route('tie_index') }}";
+
+        function load_data(){
+					
+          $.ajax({
+    
+            type:"GET",
+            url:ajax_tie_url,
+            dataType:"json",
+            success:function(data){
+    
+              if(data.next_page_url==null){
+    
+                $(window).off('scroll');
+              }else {
+    
+                ajax_tie_url = data.next_page_url;
+              }
+    
+              var html = "";
+              $(data.data).each(function(k,v){
+    
+                html += '<li class="tie_zi">\
+                    <a href="user/home.html" class="fly-avatar">\
+                      <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">\
+                    </a>\
+                    <h2>\
+                      <a class="layui-badge">'+v.class+'</a>\
+                      <a class="layui-badge layui-bg-green">'+v.type+'</a>\
+                      <a href="/tie_detail/'+ v.id +'">' + htmlspecialchars(v.title) + '</a>\
+                    </h2>\
+                    <div class="fly-list-info">\
+                      <a href="user/home.html" link>\
+                        <cite>贤心</cite>\
+                        <!--\
+                        <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>\
+                        <i class="layui-badge fly-badge-vip">VIP3</i>\
+                        -->\
+                      </a>\
+                      <span>'+ v.created_at +'</span>  \
+                      <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>\
+                      <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->\
+                      <span class="fly-list-nums"> \
+                        <i class="iconfont icon-pinglun1" title="回答"></i> 66\
+                      </span>\
+                    </div>';
+                    html += '<div class="fly-list-badge">';
+                    if(v.is_top=="1"){
+                      
+                      html += '<span class="layui-badge layui-bg-black">置顶</span>';
+                    }
+                    if(v.is_jing=="1"){
+
+                    html += '<span class="layui-badge layui-bg-red">精帖</span>';
+                    }
+                    html += '</div>';       
+                    html += '</li>';
+              });
+    
+              $("#tie_list").append(html);
+
+              disallow_load = false;
+            }
+    
+    
+          });
+        }
+
+        load_data();
+
+        $(window).on('scroll',function(){
+
+            if(disallow_load){
+
+                return;
+            }
+
+            var st = $(window).scrollTop();
+            var wh = $(window).height();
+            var dh = $(document).height();
+
+            if(st + wh >= dh) {
+
+                var img = $("<img src='/images/loading.gif'>");
+                $('#tie_list').append(img);
+
+                disallow_load = true;
+
+                setTimeout(function(){
+
+                    load_data();
+                    img.remove();
+                },2000);
+            }
+        });
+        
+
+        $(".tie_list").click(function(e){
+            $(window).off('scroll');
+            disallow_load = false;
+            
             e.preventDefault(); // 阻止链接跳转
             var url = this.href; // 保存点击的地址
+            ajax_tie_url = url;
 
-            $.ajax({
-                type:"GET",
-                url:url,
-                dataType:"json",   // 服务器数据的格式
-                success:function(data){
+            $(".fly-panel-title .layui-this").removeClass("layui-this");
+    
+            $(this).addClass("layui-this");
 
-                    $(".tie_zi").remove();
+            $(".tie_zi").remove();
+            load_data(); 
 
-                    var html = "";
-                    $(data.data).each(function(k,v){
+            $(window).on('scroll',function(){
 
-                        html += '<li class="tie_zi">\
-            <a href="user/home.html" class="fly-avatar">\
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">\
-            </a>\
-            <h2>\
-              <a class="layui-badge">'+v.class+'</a>\
-              <a href="jie/detail.html">' + v.title + '</a>\
-            </h2>\
-            <div class="fly-list-info">\
-              <a href="user/home.html" link>\
-                <cite>贤心</cite>\
-                <!--\
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>\
-                <i class="layui-badge fly-badge-vip">VIP3</i>\
-                -->\
-              </a>\
-              <span>'+ v.created_at +'</span>  \
-              <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>\
-              <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->\
-              <span class="fly-list-nums"> \
-                <i class="iconfont icon-pinglun1" title="回答"></i> 66\
-              </span>\
-            </div>\
-            <div class="fly-list-badge">\
-              <!--<span class="layui-badge layui-bg-red">精帖</span>-->\
-            </div>\
-          </li>';
-                    });
+                if(disallow_load){
 
-                    $("#tie_list").append(html);
+                    return;
+                }
+
+                var st = $(window).scrollTop();
+                var wh = $(window).height();
+                var dh = $(document).height();
+                console.log(st,wh,dh);
+                if(st + wh >= dh) {
+
+                    var img = $("<img src='/images/loading.gif'>");
+                    $('#tie_list').append(img);
+
+                    disallow_load = true;
+
+                    setTimeout(function(){
+
+                        load_data();
+                        img.remove();
+                    },2000);
                 }
             });
         }); 

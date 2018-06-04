@@ -1,7 +1,8 @@
 <?php
 
 // 显示主页
-Route::get('/','IndexController@index');
+Route::get('/','IndexController@index')->name('index');
+Route::get('tie_index','IndexController@tie_index')->name('tie_index');
 
 // 发表新帖
 Route::get('/tie_add','TieController@add')->name('tie_add');
@@ -22,3 +23,24 @@ Route::get('/sendmobilecode', 'RegistController@sendmobilecode')->name('ajax-sen
 Route::get('/login', 'LoginController@login')->name('login');
 // 处理登录表单
 Route::post('/login', 'LoginController@dologin')->name('dologin');
+
+// 帖子专栏
+Route::get('/information/{class}','TieController@tie_index')->name('information');
+Route::get('/firmware/{class}','TieController@tie_index')->name('firmware');
+Route::get('/hardware/{class}','TieController@tie_index')->name('hardware');
+Route::get('/software/{class}','TieController@tie_index')->name('software');
+Route::get('/market/{class}','TieController@tie_index')->name('market');
+Route::get('/development/{class}','TieController@tie_index')->name('development');
+
+// 综合
+Route::get('/class/{class}','TieController@class')->name('class');
+
+// 分享与提问
+Route::get('/class_share/{class}/{share}','TieController@class_type')->name('class_share');
+Route::get('/class_questions/{class}/{share}','TieController@class_type')->name('class_questions');
+
+// 精帖
+Route::get('/jingtie/{class}','TieController@jingtie')->name('jingtie');
+
+// 帖子详情
+Route::get('/tie_detail/{id}','TieController@tie_detail')->name('tie_detail');

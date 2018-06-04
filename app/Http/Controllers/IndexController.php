@@ -9,7 +9,12 @@ class IndexController extends Controller
 {
     public function index(){
 
-        return view('index.index');
+        $top4 = Tie::where('is_top',"1")
+                    ->orderBy("updated_at","desc")
+                    ->take(4)
+                    ->get();
+
+        return view('index.index',['top4'=>$top4]);
     }
 
     public function tie_list($type,$is_jing){
@@ -18,22 +23,30 @@ class IndexController extends Controller
 
             if($type==" "){
 
-                $tie = Tie::paginate(10);
+                $tie = Tie::where('is_top',"0")->paginate(1);
             }else if($type=="分享"){
 
                 $tie = Tie::where("type","分享")
-                            ->paginate(10);
+                            ->where('is_top',"0")->paginate(1);
             }else {
 
                 $tie = Tie::where("type","提问")
-                            ->paginate(10);
+                            ->where('is_top',"0")->paginate(1);
             }
         }else {
 
             $tie = Tie::where('is_jing',"1")
-                        ->paginate(10);
+                        ->where('is_top',"0")->paginate(1);
         }
 
+        return $tie;
+    }
+
+    public function tie_index(){
+
+        $tie = Tie::where('is_top',"0")
+                    ->paginate(2);
+                    
         return $tie;
     }
 }

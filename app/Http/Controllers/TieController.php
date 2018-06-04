@@ -28,4 +28,45 @@ class TieController extends Controller
             'jumpTime'=>3,
         ]);
     }
+
+    public function tie_index($class){
+
+        $tie = Tie::where('class',$class)
+                    ->paginate(1);
+        
+        return view('jie.index',['tie'=>$tie,'class'=>$class]);
+    }
+
+    public function class($class){
+
+        $tie = Tie::where('class',$class)
+                    ->paginate(1);
+
+        return view('jie.index',['tie'=>$tie,'class'=>$class]);
+    }
+
+    public function class_type($class,$type){
+
+        $tie = Tie::where('class',$class)
+                    ->where('type',$type)
+                    ->paginate(1);
+        
+        return view('jie.index',['tie'=>$tie,'class'=>$class]);
+    }
+
+    public function jingtie($class){
+
+        $tie = Tie::where('is_jing',"1")
+                    ->where('class',$class)
+                    ->paginate(1);
+
+        return view('jie.index',['tie'=>$tie,'class'=>$class]);
+    }
+
+    public function tie_detail($id){
+
+        $tie = Tie::find($id);
+
+        return view('jie.detail',['tie'=>$tie]);
+    }
 }

@@ -7,15 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="fly,layui,前端社区">
   <meta name="description" content="Fly社区是模块化前端UI框架Layui的官网社区，致力于为web开发提供强劲动力">
-  <link rel="stylesheet" href="../res/layui/css/layui.css">
-  <link rel="stylesheet" href="../res/css/global.css">
+  <link rel="stylesheet" href="/res/layui/css/layui.css">
+  <link rel="stylesheet" href="/res/css/global.css">
+  
 </head>
 <body>
 
 <div class="fly-header layui-bg-black">
   <div class="layui-container">
     <a class="fly-logo" href="/">
-      <img src="../res/images/logo.png" alt="layui">
+      <img src="/res/images/logo.png" alt="layui">
     </a>
     <ul class="layui-nav fly-nav layui-hide-xs">
       <li class="layui-nav-item layui-this">
@@ -37,10 +38,10 @@
         <a class="iconfont icon-touxiang layui-hide-xs" href="user/login.html"></a>
       </li>
       <li class="layui-nav-item">
-        <a href="user/login.html">登入</a>
+        <a href="{{ route('login') }}">登入</a>
       </li>
       <li class="layui-nav-item">
-        <a href="user/reg.html">注册</a>
+        <a href="{{ route('regist') }}">注册</a>
       </li>
       <li class="layui-nav-item layui-hide-xs">
         <a href="/app/qq/" onclick="layer.msg('正在通过QQ登入', {icon:16, shade: 0.1, time:0})" title="QQ登入" class="iconfont icon-qq"></a>
