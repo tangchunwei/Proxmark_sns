@@ -75,3 +75,9 @@ Route::post('/discuss','DiscussController@discuss')->name('discuss');
 // 加载帖子评论
 Route::get('/discuss_index/{tie_id}','DiscussController@discuss_index')->name('discuss_index');
 
+// 收藏帖子
+Route::get('/collect','CollectionController@collect')->name('collect');
+
+// 删除收藏帖子
+Route::get('/collect_del','CollectionController@collect_del')->name('collect_del');
+

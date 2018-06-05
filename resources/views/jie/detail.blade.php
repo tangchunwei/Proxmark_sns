@@ -49,7 +49,12 @@
             
           </div>
           <div class="detail-hits" id="LAY_jieAdmin" data-id="123">
-              <span>{{ $tie->created_at }}</span>          
+              <span>{{ $tie->created_at }}</span>
+              @if($collection == "0")
+              <span class="layui-btn layui-btn-xs collect">收藏</span>
+              @else
+              <span class="layui-btn layui-btn-xs layui-btn-danger collect_del">取消收藏</span> 
+              @endif         
           </div>
         </div>
         <div class="detail-body photos">
@@ -187,6 +192,61 @@ layui.config({
 
     $(function(){
 
+        function bindEvent(){
+
+            // 收藏帖子
+            $(".collect").click(function(){
+               
+                var tie_id = $("input[name=tie_id]").val();
+                
+                $.ajax({
+
+                    type:"get",
+                    url:"/collect",
+                    data:{tie_id:tie_id},
+                    dataType:"json",
+                    success:function(data){
+
+                        alert("收藏成功,可在个人中心查看！");
+                        
+                        $(".collect").remove();
+                        html = '<span class="layui-btn layui-btn-xs layui-btn-danger collect_del">取消收藏</span>';
+                        $("#LAY_jieAdmin").append(html);
+                        bindEvent();
+                    }
+                });
+            });
+
+
+            // 删除收藏
+            $(".collect_del").click(function(){
+          
+                var tie_id = $("input[name=tie_id]").val();
+                
+                $.ajax({
+
+                    type:"get",
+                    url:"/collect_del",
+                    data:{tie_id:tie_id},
+                    dataType:"json",
+                    success:function(data){
+
+                        alert("删除成功！");
+                        $(".collect_del").remove();
+                        html = '<span class="layui-btn layui-btn-xs collect">收藏</span>';
+                        $("#LAY_jieAdmin").append(html);
+                        bindEvent();
+                    }
+                });
+
+            });
+          
+        }
+
+        bindEvent();
+
+        
+
         function htmlspecialchars(str) {
 
             var s = "";
@@ -263,15 +323,12 @@ layui.config({
                   <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>\
                   <i class="layui-badge fly-badge-vip">VIP3</i>\
                 </a> \
-                @if(session('id')=='+ v.user_id +')\
                 <span>(楼主)</span>\
-                @endif\
               </div>\
               <div class="detail-hits">\
                 <span>'+ v.created_at +'</span>\
               </div>\
-              <i class="iconfont icon-caina" title="最佳答案"></i>\
-            </div>\
+              </div>\
             <div class="detail-body jieda-body photos">'+ v.content +'</div>\
             <div class="jieda-reply">\
               <span class="jieda-zan zanok" type="zan">\

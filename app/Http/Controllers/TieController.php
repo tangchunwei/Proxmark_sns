@@ -7,6 +7,7 @@ use App\Http\Requests\TieRequest;
 use App\Models\Tie;
 use App\Models\Question;
 use DB;
+use App\Models\Collection;
 
 class TieController extends Controller
 {
@@ -87,10 +88,12 @@ class TieController extends Controller
 
         $tie = Tie::with('user')
                     ->find($id);
-        
+        $collection = Collection::where('user_id',session('id'))
+                                ->where('tie_id',$id)
+                                ->count();
         $tie->increment('display',1);
 
-        return view('jie.detail',['tie'=>$tie]);
+        return view('jie.detail',['tie'=>$tie,'collection'=>$collection]);
     }
 
 }
