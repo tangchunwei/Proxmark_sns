@@ -27,16 +27,20 @@
           @foreach($tie as $t)         
           <li>
             <a href="user/home.html" class="fly-avatar">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
+              @if($t->user->mdface)
+              <img src="{{ Storage::url($t->user->mdface) }}" width='44' alt="{{ $t->user->name }}">
+              @else
+              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" width='44' alt="{{ $t->user->name }}">
+              @endif
             </a>
             <h2>
               <a class="layui-badge">{{ $t->class }}</a>
               <a class="layui-badge layui-bg-green">{{ $t->type }}</a>
-              <a href="detail.html">{{ $t->title }}</a>
+              <a href="{{ route('tie_detail',['id'=>($t->id)]) }}">{{ $t->title }}</a>
             </h2>
             <div class="fly-list-info">
               <a href="user/home.html" link>
-                <cite>贤心</cite>
+                <cite>{{ $t->user->name }}</cite>
                 <!--
                 <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
                 <i class="layui-badge fly-badge-vip">VIP3</i>

@@ -20,7 +20,7 @@
                 <div class="layui-col-md3">
                   <label class="layui-form-label">所在专栏</label>
                   <div class="layui-input-block">
-                    <select lay-verify="required" name="class" lay-filter="column"> 
+                    <select lay-verify="required" id="class" name="class" lay-filter="column"> 
                       <option></option> 
                       <option value="信息">信息</option> 
                       <option value="固件开发">固件开发</option> 
@@ -31,6 +31,7 @@
                     </select>
                   </div>
                 </div>
+
                 <div class="layui-col-md9">
                   <label for="L_title" class="layui-form-label">标题</label>
                   <div class="layui-input-block">
@@ -50,19 +51,10 @@
 
               <div class="layui-form-item layui-form-text">
                 <div class="layui-input-block">
-                  <textarea id="L_content" name="content" required lay-verify="required" placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;"></textarea>
+                  <textarea style="margin-top:20px;" id="L_content" name="content" required lay-verify="required" placeholder="详细描述" class="layui-textarea fly-editor" style="height: 260px;"></textarea>
                 </div>
               </div>
               
-              <div class="layui-form-item">
-                <label for="L_vercode" class="layui-form-label">人类验证</label>
-                <div class="layui-input-inline">
-                  <input type="text" id="L_vercode" name="vercode" required lay-verify="required" placeholder="请回答后面的问题" autocomplete="off" class="layui-input">
-                </div>
-                <div class="layui-form-mid">
-                  <span style="color: #c00;">1+1=?</span>
-                </div>
-              </div>
               <div class="layui-form-item">
                 <button class="layui-btn" lay-filter="*" lay-submit>立即发布</button>
               </div>
@@ -82,7 +74,14 @@
     <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
   </p>
 </div>
+<style>
 
+    .layui-form-select dl {
+
+         z-index:1000;
+    }
+
+</style>
 <script src="../../res/layui/layui.js"></script>
 <script>
 layui.cache.page = 'jie';
@@ -93,6 +92,20 @@ layui.config({
 }).extend({
   fly: 'index'
 }).use('fly');
+</script>
+
+<link href="/ueditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="/ueditor/third-party/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/umeditor.min.js"></script>
+<script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="ueditor.all.js"></script>
+<script>
+UM.getEditor('L_content', {
+	initialFrameWidth:"100%",
+	initialFrameHeight:"300"
+});
 </script>
 
 @endsection

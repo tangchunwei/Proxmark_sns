@@ -17,7 +17,7 @@ class TieController extends Controller
 
         $tie = new Tie;
         $tie->fill($req->except('vercode'));
-        $tie->user_id = session('id') ? session('id') : 1;
+        $tie->user_id = session('id') ? session('id') : 0;
         
         $tie->save();
 
@@ -25,14 +25,16 @@ class TieController extends Controller
             'message'=>'贴子发表成功！',
             'name'=>'首页',
             'url' =>'/', 
-            'jumpTime'=>3,
+            'jumpTime'=>1,
         ]);
     }
 
     public function tie_index($class){
 
         $tie = Tie::where('class',$class)
-                    ->paginate(1);
+                    ->orderBy('id','desc')
+                    ->with('user')
+                    ->paginate(3);
         
         return view('jie.index',['tie'=>$tie,'class'=>$class]);
     }
@@ -40,7 +42,9 @@ class TieController extends Controller
     public function class($class){
 
         $tie = Tie::where('class',$class)
-                    ->paginate(1);
+                    ->orderBy('id','desc')
+                    ->with('user')
+                    ->paginate(3);
 
         return view('jie.index',['tie'=>$tie,'class'=>$class]);
     }
@@ -49,7 +53,9 @@ class TieController extends Controller
 
         $tie = Tie::where('class',$class)
                     ->where('type',$type)
-                    ->paginate(1);
+                    ->orderBy('id','desc')
+                    ->with('user')
+                    ->paginate(3);
         
         return view('jie.index',['tie'=>$tie,'class'=>$class]);
     }
@@ -58,15 +64,21 @@ class TieController extends Controller
 
         $tie = Tie::where('is_jing',"1")
                     ->where('class',$class)
-                    ->paginate(1);
+                    ->orderBy('id','desc')
+                    ->with('user')
+                    ->paginate(3);
 
         return view('jie.index',['tie'=>$tie,'class'=>$class]);
     }
 
     public function tie_detail($id){
 
-        $tie = Tie::find($id);
+        $tie = Tie::with('user')
+                    ->find($id);
+        
+        $tie->increment('display',1);
 
         return view('jie.detail',['tie'=>$tie]);
     }
+
 }

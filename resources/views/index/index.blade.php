@@ -19,7 +19,11 @@
         @foreach($top4 as $t4)
           <li>
             <a href="user/home.html" class="fly-avatar">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
+              @if($t4->user->mdface)
+              <img src="{{ Storage::url($t4->user->mdface) }}" alt="{{ $t4->user->name }}">
+              @else
+              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="{{ $t4->user->name }}">
+              @endif
             </a>
             <h2>
               <a class="layui-badge">{{ $t4->class }}</a>
@@ -28,7 +32,7 @@
             </h2>
             <div class="fly-list-info">
               <a href="user/home.html" link>
-                <cite>贤心</cite>
+                <cite>{{ $t4->user->name }}</cite>
                 <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
                 <i class="layui-badge fly-badge-vip">VIP3</i>
               </a>
@@ -278,9 +282,14 @@ layui.config({
               $(data.data).each(function(k,v){
     
                 html += '<li class="tie_zi">\
-                    <a href="user/home.html" class="fly-avatar">\
-                      <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">\
-                    </a>\
+                    <a href="user/home.html" class="fly-avatar">';
+                if(v.user.mdface){
+                    html += '<img src="/uploads/'+ v.user.mdface +'" alt="'+ v.user.name +'">';
+                }else {
+                    html += '<img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="'+ v.user.name +'">';
+                }
+
+                html += '</a>\
                     <h2>\
                       <a class="layui-badge">'+v.class+'</a>\
                       <a class="layui-badge layui-bg-green">'+v.type+'</a>\
@@ -288,7 +297,7 @@ layui.config({
                     </h2>\
                     <div class="fly-list-info">\
                       <a href="user/home.html" link>\
-                        <cite>贤心</cite>\
+                        <cite>'+ v.user.name +'</cite>\
                         <!--\
                         <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>\
                         <i class="layui-badge fly-badge-vip">VIP3</i>\

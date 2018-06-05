@@ -11,6 +11,7 @@ class IndexController extends Controller
 
         $top4 = Tie::where('is_top',"1")
                     ->orderBy("updated_at","desc")
+                    ->with('user')
                     ->take(4)
                     ->get();
 
@@ -23,20 +24,32 @@ class IndexController extends Controller
 
             if($type==" "){
 
-                $tie = Tie::where('is_top',"0")->paginate(1);
+                $tie = Tie::where('is_top',"0")
+                            ->orderBy('id','desc')
+                            ->with('user')
+                            ->paginate(10);
             }else if($type=="分享"){
 
                 $tie = Tie::where("type","分享")
-                            ->where('is_top',"0")->paginate(1);
+                            ->where('is_top',"0")
+                            ->orderBy('id','desc')
+                            ->with('user')
+                            ->paginate(10);
             }else {
 
                 $tie = Tie::where("type","提问")
-                            ->where('is_top',"0")->paginate(1);
+                            ->where('is_top',"0")
+                            ->orderBy('id','desc')
+                            ->with('user')
+                            ->paginate(10);
             }
         }else {
 
             $tie = Tie::where('is_jing',"1")
-                        ->where('is_top',"0")->paginate(1);
+                        ->where('is_top',"0")
+                        ->orderBy('id','desc')
+                        ->with('user')
+                        ->paginate(10);
         }
 
         return $tie;
@@ -45,7 +58,9 @@ class IndexController extends Controller
     public function tie_index(){
 
         $tie = Tie::where('is_top',"0")
-                    ->paginate(2);
+                    ->orderBy('id','desc')
+                    ->with('user')
+                    ->paginate(10);
                     
         return $tie;
     }

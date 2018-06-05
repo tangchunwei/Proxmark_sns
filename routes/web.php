@@ -65,3 +65,9 @@ Route::get('/tie_detail/{id}','TieController@tie_detail')->name('tie_detail');
 // 退出
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
+// 帖子评论
+Route::post('/discuss','DiscussController@discuss')->name('discuss');
+
+// 加载帖子评论
+Route::get('/discuss_index/{tie_id}','DiscussController@discuss_index')->name('discuss_index');
+
