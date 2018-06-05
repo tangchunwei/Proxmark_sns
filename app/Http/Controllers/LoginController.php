@@ -49,6 +49,12 @@ class LoginController extends Controller
                                 'mobile' => $user->mobile,
                                 'name' => $user->name,
                                 'email' => $user->email,
+                                'bgface'=>$user->bgface,
+                                'smface'=>$user->smface,
+                                'sex' => $user->sex,
+                                'city' => $user->city,
+                                'signature' =>$user-> signature,
+                                'created_at' =>$user-> created_at,
                             ]);
                             // 跳转
                             return redirect()->route('index');

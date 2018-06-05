@@ -5,7 +5,11 @@
 @section('content')
 
 <div class="fly-home fly-panel" style="background-image: url();">
-  <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg" alt="贤心">
+  @if(session('bgface'))
+  <img src="{{ Storage::url(session('bgface')) }}" alt=" {{ session('name') }}">
+  @else
+    <img src="/images/face.jpg" alt="">
+  @endif
   <i class="iconfont icon-renzheng" title="Fly社区认证"></i>
   <h1>
     {{ session('name') }}
@@ -23,11 +27,11 @@
 
   <p class="fly-home-info">
     <i class="iconfont icon-kiss" title="飞吻"></i><span style="color: #FF7200;">66666 飞吻</span>
-    <i class="iconfont icon-shijian"></i><span>2015-6-17 加入</span>
-    <i class="iconfont icon-chengshi"></i><span>来自杭州</span>
+    <i class="iconfont icon-shijian"></i><span>{{ session('created_at') }} 加入</span>
+    <i class="iconfont icon-chengshi"></i><span>来自{{ session('city') }}</span>
   </p>
 
-  <p class="fly-home-sign">（人生仿若一场修行）</p>
+  <p class="fly-home-sign">{{ session('signature') }}</p>
 
   <div class="fly-sns" data-user="">
     <a href="javascript:;" class="layui-btn layui-btn-primary fly-imActive" data-type="addFriend">加为好友</a>

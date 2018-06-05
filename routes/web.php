@@ -19,6 +19,10 @@ Route::get('/message','UserController@message')->name('user.message');
 Route::get('/activate','UserController@activate')->name('user.activate');
 //修改头像
 Route::post("/face",'FaceController@face')->name('setface');
+//修改用户密码
+Route::post('/changepwd', 'PasswordController@changepwd')->name('changepwd');
+// 修改用户信息
+Route::post('/changemessage', 'UserController@changemessage')->name('changemessage');
 
 
 // 发表新帖
