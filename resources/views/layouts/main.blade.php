@@ -13,6 +13,7 @@
 </head>
 <body>
 
+
 <div class="fly-header layui-bg-black">
   <div class="layui-container">
     <a class="fly-logo" href="/">
@@ -57,7 +58,9 @@
           @if(session('smface'))
           <img src="{{ Storage::url(session('smface')) }}">
           @else
+
           <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg">
+
           @endif
         </a>
         <dl class="layui-nav-child">

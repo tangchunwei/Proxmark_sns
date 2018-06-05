@@ -9,6 +9,6 @@ use DB;
 class User extends Model
 {
     // 设置一个白名单
-    protected $fillable = ['mobile','password','name','email'];
+    protected $fillable = ['mobile','password','name','email','city','signature','sex'];
 
 }

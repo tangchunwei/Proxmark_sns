@@ -13,6 +13,15 @@
           <li class="layui-this">发表新帖<!-- 编辑帖子 --></li>
         </ul>
         <div class="layui-form layui-tab-content" id="LAY_ucm" style="padding: 20px 0;">
+          <div class="container">
+            @if($errors->any())
+              <ul class="error">
+                @foreach($errors->all() as $e)
+                  <li>{{$e}}</li>
+                @endforeach
+              </ul>
+            @endif
+          </div>
           <div class="layui-tab-item layui-show">
             <form action="{{ route('tie_doadd') }}" method="post">
               {{ csrf_field() }}
@@ -56,6 +65,19 @@
               </div>
               
               <div class="layui-form-item">
+
+                <label for="L_vercode" class="layui-form-label">人类验证</label>
+                <div class="layui-input-inline">
+                  <input type="text" id="L_vercode" name="answer" required lay-verify="required" placeholder="请回答后面的问题" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid">
+                  @foreach($questions as $v)
+                    <span style="color: #c00;">{{ $v->question }}</span>
+                  @endforeach
+                </div>
+              </div>
+              <div class="layui-form-item">
+
                 <button class="layui-btn" lay-filter="*" lay-submit>立即发布</button>
               </div>
             </form>
