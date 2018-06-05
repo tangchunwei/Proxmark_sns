@@ -24,7 +24,7 @@
         </div>
 
         <ul class="fly-list"> 
-          @foreach($tie as $t)         
+          @foreach($tie as $t)
           <li>
             <a href="user/home.html" class="fly-avatar">
               @if($t->user->mdface)
