@@ -12,4 +12,8 @@ class Discuss extends Model
 
         return $this->belongsTo('App\Models\User','user_id');
     }
+    public function tie(){
+
+        return $this->belongsTo('App\Models\Tie','tie_id');
+    }
 }

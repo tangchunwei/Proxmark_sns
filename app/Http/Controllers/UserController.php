@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\MessageRequest;
 use App\Models\User;
 use DB;
+use App\Models\Discuss;
 
 class UserController extends Controller
 {
@@ -15,7 +16,19 @@ class UserController extends Controller
         }
         //显示个人主页界面
         public function home(){
-            return view('user.home');
+            //查询最近的提问
+            $data = DB::table('ties')
+                        ->where('user_id', '=', session('id'))
+                        ->orderby('is_jing','desc')
+                        ->get();
+            //查询最近的回答
+            $reanswer = Discuss::where('user_id',session('id'))
+                ->with('tie')
+                ->get();
+            return view('user.home',[
+                'data'=>$data,
+                'reanswer'=>$reanswer,
+            ]);
         }
         //显示用户中心界面
         public function userIndex(){
