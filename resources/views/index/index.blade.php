@@ -241,7 +241,10 @@ layui.config({
         }
 
         var disallow_load = true;  // 是否不允许加载
-		    var ajax_tie_url = "{{ route('tie_index') }}";
+
+        var ajax_tie_url = "/tie_index?keyword={{ $keyword }}";
+
+
 
         function load_data(){
 					

@@ -3,7 +3,7 @@
 // 显示主页
 
 Route::get('/','IndexController@index')->name('index');
-Route::get('tie_index','IndexController@tie_index')->name('tie_index');
+Route::get('/tie_index','IndexController@tie_index')->name('tie_index');
 
 
 

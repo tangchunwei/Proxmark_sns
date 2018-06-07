@@ -10,8 +10,16 @@ use App\Models\Discuss;
 
 class IndexController extends Controller
 {
-    public function index(){
+    public function index(Request $req){
 
+        if($req->keyword){
+
+            $keyword = $req->keyword;
+        }else {
+
+            $keyword = "";
+        }
+        
         //$top5 =  Cache::remember('top5', 60, function(){
 
             $top5 = Tie::where('type','分享')
@@ -46,7 +54,7 @@ class IndexController extends Controller
                     ->take(4)
                     ->get();
 
-        return view('index.index',['top4'=>$top4,'top5'=>$top5,'top12'=>$top12,'top10'=>$top10]);
+        return view('index.index',['top4'=>$top4,'top5'=>$top5,'top12'=>$top12,'top10'=>$top10,'keyword'=>$keyword]);
     }
 
     public function tie_list($type,$is_jing){
@@ -56,9 +64,10 @@ class IndexController extends Controller
             if($type==" "){
 
                 $tie = Tie::where('is_top',"0")
-                            ->orderBy('id','desc')
-                            ->with('user')
-                            ->paginate(10);
+                        ->orderBy('id','desc')
+                        ->with('user')
+                        ->paginate(10);
+                
             }else if($type=="分享"){
 
                 $tie = Tie::where("type","分享")
@@ -86,13 +95,26 @@ class IndexController extends Controller
         return $tie;
     }
 
-    public function tie_index(){
+    public function tie_index(Request $req){
+        
 
-        $tie = Tie::where('is_top',"0")
+        if($req->keyword){
+              
+            $tie = Tie::where('title','like',"%$req->keyword%")
+                        ->where('is_top',"0")
+                        ->orderBy('id','desc')
+                        ->with('user')
+                        ->paginate(10);
+        
+        }else {
+
+            $tie = Tie::where('is_top',"0")
                     ->orderBy('id','desc')
                     ->with('user')
                     ->paginate(10);
-                    
+        }
+
+          
         return $tie;
     }
 }
