@@ -28,13 +28,16 @@ class UserController extends Controller
                         ->take(20)
                         ->get();
             //查询最近的回答
-            $reanswer = Discuss::where('user_id',session('id'))
+            $reanswer = Discuss::where('user_id',$id)
                 ->with('tie')
                 ->take(15)
                 ->get();
+            $user=User::where('id',$id)
+                ->first();
             return view('user.home',[
                 'data'=>$data,
                 'reanswer'=>$reanswer,
+                'user'=>$user,
             ]);
         }
         //显示用户中心界面

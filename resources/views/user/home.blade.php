@@ -5,14 +5,14 @@
 @section('content')
 
 <div class="fly-home fly-panel" style="background-image: url();">
-  @if(session('bgface'))
-  <img src="{{ Storage::url(session('bgface')) }}" alt=" {{ session('name') }}">
+  @if($user->bgface)
+  <img src="{{ Storage::url($user->bgface) }}" alt=" {{ $user->name }}">
   @else
     <img src="/images/face.jpg" alt="">
   @endif
   <i class="iconfont icon-renzheng" title="Fly社区认证"></i>
   <h1>
-    {{ session('name') }}
+    {{ $user->name }}
     <i class="iconfont icon-nan"></i>
     <!-- <i class="iconfont icon-nv"></i>  -->
     <i class="layui-badge fly-badge-vip">VIP3</i>
@@ -27,11 +27,11 @@
 
   <p class="fly-home-info">
     <i class="iconfont icon-kiss" title="飞吻"></i><span style="color: #FF7200;">66666 飞吻</span>
-    <i class="iconfont icon-shijian"></i><span>{{ session('created_at') }} 加入</span>
-    <i class="iconfont icon-chengshi"></i><span>来自{{ session('city') }}</span>
+    <i class="iconfont icon-shijian"></i><span>{{ $user->created_at}} 加入</span>
+    <i class="iconfont icon-chengshi"></i><span>来自{{ $user->city}}</span>
   </p>
 
-  <p class="fly-home-sign">{{ session('signature') }}</p>
+  <p class="fly-home-sign">{{ $user->signature }}</p>
 
   <div class="fly-sns" data-user="">
     <a href="javascript:;" class="layui-btn layui-btn-primary fly-imActive" data-type="addFriend">加为好友</a>
@@ -44,7 +44,7 @@
   <div class="layui-row layui-col-space15">
     <div class="layui-col-md6 fly-home-jie">
       <div class="fly-panel">
-        <h3 class="fly-panel-title">{{ session('name') }} 最近的提问</h3>
+        <h3 class="fly-panel-title">{{ $user->name }} 最近的提问</h3>
         <ul class="jie-row">
           @foreach($data as $value)
                 @if($value->is_jing)
@@ -69,7 +69,7 @@
     
     <div class="layui-col-md6 fly-home-da">
       <div class="fly-panel">
-        <h3 class="fly-panel-title">{{session('name')}} 最近的回答</h3>
+        <h3 class="fly-panel-title">{{ $user->name }} 最近的回答</h3>
         <ul class="home-jieda">
             @foreach($reanswer as $value)
           <li>
