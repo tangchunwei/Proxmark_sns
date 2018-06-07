@@ -4,10 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tie;
+use DB;
+use Cache;
+use App\Models\Discuss;
 
 class IndexController extends Controller
 {
     public function index(){
+
+        //$top5 =  Cache::remember('top5', 60, function(){
+
+            $top5 = Tie::where('type','分享')
+                    ->orderBy('display','desc')
+                    ->where('created_at','>=',DB::raw('NOW() - INTERVAL 7 DAY'))
+                    ->take(5)
+                    ->get();
+        //});
+
+        //$top12 =  Cache::remember('top12', 60, function(){
+            
+            $top12 = Discuss::select('user_id',DB::raw('count(user_id) as count')) 
+                            ->where('created_at','>=',DB::raw('NOW() - INTERVAL 7 DAY'))
+                            ->orderBy(DB::raw(count('user_id')),'desc')
+                            ->groupBy('user_id')   
+                            ->with('user')
+                            ->take(12)
+                            ->get();
+        //});
+        
+        $top10 = Tie::where('created_at','>=',DB::raw('NOW() - INTERVAL 7 DAY'))
+                    ->orderBy('discuss','desc')
+                    ->take(10)
+                    ->get();
+        
+                            
+
 
         $top4 = Tie::where('is_top',"1")
                     ->orderBy("updated_at","desc")
@@ -15,7 +46,7 @@ class IndexController extends Controller
                     ->take(4)
                     ->get();
 
-        return view('index.index',['top4'=>$top4]);
+        return view('index.index',['top4'=>$top4,'top5'=>$top5,'top12'=>$top12,'top10'=>$top10]);
     }
 
     public function tie_list($type,$is_jing){

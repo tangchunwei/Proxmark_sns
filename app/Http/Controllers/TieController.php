@@ -49,7 +49,13 @@ class TieController extends Controller
                     ->with('user')
                     ->paginate(3);
         
-        return view('jie.index',['tie'=>$tie,'class'=>$class]);
+        $top10 = Tie::where('created_at','>=',DB::raw('NOW() - INTERVAL 7 DAY'))
+                    ->orderBy('discuss','desc')
+                    ->take(10)
+                    ->get();
+
+        
+        return view('jie.index',['tie'=>$tie,'class'=>$class,'top10'=>$top10]);
     }
 
     public function class($class){
@@ -59,7 +65,12 @@ class TieController extends Controller
                     ->with('user')
                     ->paginate(3);
 
-        return view('jie.index',['tie'=>$tie,'class'=>$class]);
+        $top10 = Tie::where('created_at','>=',DB::raw('NOW() - INTERVAL 7 DAY'))
+                    ->orderBy('discuss','desc')
+                    ->take(10)
+                    ->get();
+
+        return view('jie.index',['tie'=>$tie,'class'=>$class,'top10'=>$top10]);
     }
 
     public function class_type($class,$type){
@@ -69,8 +80,13 @@ class TieController extends Controller
                     ->orderBy('id','desc')
                     ->with('user')
                     ->paginate(3);
+
+        $top10 = Tie::where('created_at','>=',DB::raw('NOW() - INTERVAL 7 DAY'))
+                    ->orderBy('discuss','desc')
+                    ->take(10)
+                    ->get();
         
-        return view('jie.index',['tie'=>$tie,'class'=>$class]);
+        return view('jie.index',['tie'=>$tie,'class'=>$class,'top10'=>$top10]);
     }
 
     public function jingtie($class){
@@ -81,7 +97,12 @@ class TieController extends Controller
                     ->with('user')
                     ->paginate(3);
 
-        return view('jie.index',['tie'=>$tie,'class'=>$class]);
+        $top10 = Tie::where('created_at','>=',DB::raw('NOW() - INTERVAL 7 DAY'))
+                    ->orderBy('discuss','desc')
+                    ->take(10)
+                    ->get();
+
+        return view('jie.index',['tie'=>$tie,'class'=>$class,'top10'=>$top10]);
     }
 
     public function tie_detail($id){
@@ -93,7 +114,12 @@ class TieController extends Controller
                                 ->count();
         $tie->increment('display',1);
 
-        return view('jie.detail',['tie'=>$tie,'collection'=>$collection]);
+        $top10 = Tie::where('created_at','>=',DB::raw('NOW() - INTERVAL 7 DAY'))
+                    ->orderBy('discuss','desc')
+                    ->take(10)
+                    ->get();
+
+        return view('jie.detail',['tie'=>$tie,'collection'=>$collection,'top10'=>$top10]);
     }
 
 }

@@ -95,25 +95,11 @@
       <div class="fly-panel">
         <h3 class="fly-panel-title">温馨通道</h3>
         <ul class="fly-panel-main fly-list-static">
+        @foreach($top5 as $t5)
           <li>
-            <a href="http://fly.layui.com/jie/4281/" target="_blank">layui 的 GitHub 及 Gitee (码云) 仓库，欢迎Star</a>
+            <a href="{{ route('tie_detail',['id'=>($t5->id)]) }}" target="_blank">{{ $t5->title }}</a>
           </li>
-          <li>
-            <a href="http://fly.layui.com/jie/5366/" target="_blank">
-              layui 常见问题的处理和实用干货集锦
-            </a>
-          </li>
-          <li>
-            <a href="http://fly.layui.com/jie/4281/" target="_blank">layui 的 GitHub 及 Gitee (码云) 仓库，欢迎Star</a>
-          </li>
-          <li>
-            <a href="http://fly.layui.com/jie/5366/" target="_blank">
-              layui 常见问题的处理和实用干货集锦
-            </a>
-          </li>
-          <li>
-            <a href="http://fly.layui.com/jie/4281/" target="_blank">layui 的 GitHub 及 Gitee (码云) 仓库，欢迎Star</a>
-          </li>
+        @endforeach
         </ul>
       </div>
 
@@ -143,30 +129,26 @@
         <h3 class="fly-panel-title">回贴周榜</h3>
         <dl>
           <!--<i class="layui-icon fly-loading">&#xe63d;</i>-->
+          @foreach($top12 as $t12)
           <dd>
             <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"><cite>贤心</cite><i>106次回答</i>
+              <img src="{{ Storage::url($t12->user->mdface) }}"><cite>{{ $t12->user->name }}</cite><i>{{ $t12->count }}次回答</i>
             </a>
           </dd>
-          <dd>
-            <a href="user/home.html">
-              <img src="https://tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"><cite>贤心</cite><i>106次回答</i>
-            </a>
-          </dd>
+          @endforeach
          
         </dl>
       </div>
 
       <dl class="fly-panel fly-list-one">
         <dt class="fly-panel-title">本周热议</dt>
+        @foreach($top10 as $t10)
         <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+          <a href="{{ route('tie_detail',['id'=>($t10->id)]) }}">{{ $t10->title }}</a>
+          <span><i class="iconfont icon-pinglun1"></i> {{ $t10->discuss }}</span>
         </dd>
-        <dd>
-          <a href="jie/detail.html">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
+        @endforeach
+        
         
 
         <!-- 无数据时 -->

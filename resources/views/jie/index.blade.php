@@ -78,15 +78,14 @@
     <div class="layui-col-md4">
       <dl class="fly-panel fly-list-one">
         <dt class="fly-panel-title">本周热议</dt>
+
+        @foreach($top10 as $t10)
         <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
+          <a href="{{ route('tie_detail',['id'=>($t10->id)]) }}">{{ $t10->title }}</a>
+          <span><i class="iconfont icon-pinglun1"></i> {{ $t10->discuss }}</span>
         </dd>
-        <dd>
-          <a href="">基于 layui 的极简社区页面模版</a>
-          <span><i class="iconfont icon-pinglun1"></i> 16</span>
-        </dd>
-        
+        @endforeach
+
 
         <!-- 无数据时 -->
         <!--
