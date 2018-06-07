@@ -109,7 +109,7 @@ class RegistController extends Controller
                 print('邮箱激活成功耶耶耶<br>三秒后自动跳转。');
             }else{
                 header("refresh:3;url=/set");
-                print('邮箱激活失败23333333333333,请重新激活<br>三秒后自动跳转。');
+                print('邮箱激活失败23333333333333,您的邮箱已经被激活<br>三秒后自动跳转。');
             }
         }else{
             header("refresh:3;url=/set");
