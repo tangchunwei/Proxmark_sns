@@ -12,6 +12,7 @@ use App\Models\Collection;
 class TieController extends Controller
 {
     public function add(){
+
         $questions=Question::getQuestions();
         return view('jie.add',[
             'questions'=>$questions,

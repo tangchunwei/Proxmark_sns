@@ -18,7 +18,7 @@
         <ul class="fly-list">
         @foreach($top4 as $t4)
           <li>
-            <a href="user/home.html" class="fly-avatar">
+            <a  class="fly-avatar">
               @if($t4->user->mdface)
               <img src="{{ Storage::url($t4->user->mdface) }}" alt="{{ $t4->user->name }}">
               @else
@@ -31,7 +31,7 @@
               <a href="{{ route('tie_detail',['id'=>($t4->id)]) }}">{{ $t4->title }}</a>
             </h2>
             <div class="fly-list-info">
-              <a href="user/home.html" link>
+              <a  link>
                 <cite>{{ $t4->user->name }}</cite>
                 <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
                 <i class="layui-badge fly-badge-vip">VIP3</i>
@@ -131,7 +131,7 @@
           <!--<i class="layui-icon fly-loading">&#xe63d;</i>-->
           @foreach($top12 as $t12)
           <dd>
-            <a href="user/home.html">
+            <a>
               <img src="{{ Storage::url($t12->user->mdface) }}"><cite>{{ $t12->user->name }}</cite><i>{{ $t12->count }}次回答</i>
             </a>
           </dd>
@@ -267,7 +267,7 @@ layui.config({
               $(data.data).each(function(k,v){
     
                 html += '<li class="tie_zi">\
-                    <a href="user/home.html" class="fly-avatar">';
+                    <a class="fly-avatar">';
                 if(v.user.mdface){
                     html += '<img src="/uploads/'+ v.user.mdface +'" alt="'+ v.user.name +'">';
                 }else {
@@ -281,7 +281,7 @@ layui.config({
                       <a href="/tie_detail/'+ v.id +'">' + htmlspecialchars(v.title) + '</a>\
                     </h2>\
                     <div class="fly-list-info">\
-                      <a href="user/home.html" link>\
+                      <a link>\
                         <cite>'+ v.user.name +'</cite>\
                         <!--\
                         <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>\

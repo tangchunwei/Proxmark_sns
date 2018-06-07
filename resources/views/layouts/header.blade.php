@@ -15,13 +15,18 @@
       <li class="layui-hide-xs layui-hide-sm layui-show-md-inline-block"><a href="{{ route('user.index') }}#collection">我收藏的贴</a></li>
     @endif
     </ul> 
-    
-    <div class="fly-column-right layui-hide-xs"> 
-      <span class="fly-search"><i class="layui-icon"></i></span> 
-      <a href="{{ route('tie_add') }}" class="layui-btn">发表新帖</a> 
-    </div> 
-    <div class="layui-hide-sm layui-show-xs-block" style="margin-top: -10px; padding-bottom: 10px; text-align: center;"> 
+
+    @if(session('id'))
+    <div class="fly-column-right layui-hide-xs">
+      <span class="fly-search"><i class="layui-icon"></i></span>
       <a href="{{ route('tie_add') }}" class="layui-btn">发表新帖</a>
-    </div> 
+    </div>
+      @else
+      <div class="fly-column-right layui-hide-xs">
+        <span class="fly-search"><i class="layui-icon"></i></span>
+        <a href="{{ route('login') }}" class="layui-btn">发表新帖</a>
+      </div>
+        @endif
+
   </div>
 </div>
