@@ -23,7 +23,6 @@ class LoginController extends Controller
                     // 先通过手机号到数据库中查询用户的信息
                     // select * from users where mobile=$req->mobile limit 1
                     $user = User::where('mobile',$req->mobile)->first();
-
                     // 判断是否是机器人
                     if($user)
                     {
@@ -55,6 +54,7 @@ class LoginController extends Controller
                                 'city' => $user->city,
                                 'signature' =>$user-> signature,
                                 'created_at' =>$user-> created_at,
+                                'verification_token'=>$user->verification_token,
                             ]);
                             // 跳转
                             return redirect()->route('index');

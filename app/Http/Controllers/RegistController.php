@@ -9,6 +9,8 @@ use Hash;
 use Flc\Dysms\Request\SendSms;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Requests\RegistRequest;
+use Illuminate\Support\Facades\Mail;
+use DB;
 
 
 
@@ -37,6 +39,7 @@ class RegistController extends Controller
                 $user->mobile = $req->mobile;
                 // 把加密 之后的密码设置到模型
                 $user->password = $password;
+                $user->verification_token=$password;
                 //把用户名保存到表中
                  $user->name = $req->username;
                 // 保存到表中
@@ -66,5 +69,53 @@ class RegistController extends Controller
                 $sendSms->setTemplateParam(['code' => $code]);
                 // 发送
                 $client->execute($sendSms);
+    }
+    //发送邮件激活
+    public function verification(Request $req){
+            $email=$req->email;
+            $name="test";
+            $uid="111";
+            $code="21212";
+            $data = ['email'=>$email, 'name'=>$name, 'uid'=>$uid, 'activationcode'=>$code];
+            $flag=Mail::send('user.mail', $data, function($message) use($data)
+            {
+                $message->to($data['email'], $data['name'])->subject('Proxmark3社区激活邮件');
+            });
+                    if(!$flag){
+
+                        header("refresh:3;url=/set");
+                        print('发送邮件成功<br>三秒后自动跳转。');
+
+                    }else{
+                        header("refresh:3;url=/set");
+                        print('发送邮件失败，请重试！<br>三秒后自动跳转。');
+
+                    }
+        }
+    //检测邮件是否激活
+    public function checkverification(Request $req){
+        $token=$req->token;
+        $email=$req->email;
+        $checkemail = User::where('email',$email)
+                        ->first();
+        if($token&&$checkemail!=null){
+            if($checkemail->verification_token==$token){
+                DB::table('users')
+                    ->where('email',$email)
+                    ->update([
+                        'verified' => "1",
+                    ]);
+                header("refresh:3;url=/set");
+                print('邮箱激活成功耶耶耶<br>三秒后自动跳转。');
+            }else{
+                header("refresh:3;url=/set");
+                print('邮箱激活失败23333333333333,请重新激活<br>三秒后自动跳转。');
+            }
+        }else{
+            header("refresh:3;url=/set");
+            print('路径不对<br>三秒后自动跳转。');
+        }
+
+
     }
 }

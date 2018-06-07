@@ -54,22 +54,31 @@
         <ul class="layui-form">
           <li class="layui-form-li">
             <label for="activate">您的邮箱：</label>
-            <span class="layui-form-text">xx@xx.com
-              <!-- <em style="color:#999;">（已成功激活）</em> -->
+            @if( $data->email )
+            <span class="layui-form-text">{{ $data->email }}
+                @if($data->verified==1)
+              <em style="color:#999;">（已成功激活）</em>
+                @else
               <em style="color:#c00;">（尚未激活）</em>
+                    @endif
             </span>
+              @else
+              <span class="layui-form-text">请 <a href="{{ route('user.set') }}" class="layui-form-a"  style="color:#4f99cf;">绑定</a>   邮箱
+            </span>
+            @endif
           </li>
           <li class="layui-form-li" style="margin-top: 20px; line-height: 26px;">
+
             <div>
               1. 如果您未收到邮件，或激活链接失效，您可以
-              <a class="layui-form-a" style="color:#4f99cf;" id="LAY-activate" href="javascript:;" email="">重新发送邮件</a>，或者
+              <a class="layui-form-a" style="color:#4f99cf;"  href="{{ route('verification') }}?email={{$data->email}}">重新发送邮件</a>，或者
               <a class="layui-form-a" style="color:#4f99cf;" href="{{ route('user.set') }}">更换邮箱</a>；
             </div>
             <div>
-              2. 如果您始终没有收到 Fly 发送的邮件，请注意查看您邮箱中的垃圾邮件；
+              2. 如果您始终没有收到 我们 发送的邮件，请注意查看您邮箱中的垃圾邮件；
             </div>
             <div>
-              3. 如果你实在无法激活邮件，您还可以联系：admin@xx.com
+              3. 如果你实在无法激活邮件，您还可以联系：2239991414@qq.com
             </div>
           </li>
         </ul>

@@ -100,7 +100,11 @@
               <div class="layui-input-inline">
                 <input type="text" id="L_email" name="email" required lay-verify="email" autocomplete="off" value="{{ session('email') }}" class="layui-input">
               </div>
-              <div class="layui-form-mid layui-word-aux">如果您在邮箱已激活的情况下，变更了邮箱，需<a href="{{ route('user.activate') }}" style="font-size: 12px; color: #4f99cf;">重新验证邮箱</a>。</div>
+                @if($data->verified==1)
+              <div class="layui-form-mid layui-word-aux">您的邮箱已激活，也可以作为登入名</div>
+                    @else
+                    <div class="layui-form-mid layui-word-aux">您的邮箱未激活，请<a href="{{ route('user.activate') }}" style="font-size: 12px; color: #4f99cf;">激活</a>。</div>
+                @endif
             </div>
             <div class="layui-form-item">
               <label for="L_username" class="layui-form-label">昵称</label>
