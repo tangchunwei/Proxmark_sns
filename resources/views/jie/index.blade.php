@@ -26,7 +26,7 @@
         <ul class="fly-list"> 
           @foreach($tie as $t)
           <li>
-            <a  class="fly-avatar">
+            <a href="{{ route('user.home',['id'=>$t->user->id]) }}" class="fly-avatar">
               @if($t->user->mdface)
               <img src="{{ Storage::url($t->user->mdface) }}" width='44' alt="{{ $t->user->name }}">
               @else
@@ -39,7 +39,7 @@
               <a href="{{ route('tie_detail',['id'=>($t->id)]) }}">{{ $t->title }}</a>
             </h2>
             <div class="fly-list-info">
-              <a link>
+              <a href="{{ route('user.home',['id'=>$t->user->id]) }}" link>
                 <cite>{{ $t->user->name }}</cite>
                 <!--
                 <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>

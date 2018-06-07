@@ -37,7 +37,7 @@
     <div class="layui-container fly-marginTop fly-user-main">
   <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="user">
     <li class="layui-nav-item">
-      <a href="{{ route('user.home') }}">
+      <a href="{{ route('user.home',['id'=>session('id')]) }}">
         <i class="layui-icon">&#xe609;</i>
         我的主页
       </a>

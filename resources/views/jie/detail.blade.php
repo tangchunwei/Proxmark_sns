@@ -33,7 +33,7 @@
           </span>
         </div>
         <div class="detail-about">
-          <a class="fly-avatar" href="../user/home.html">
+          <a class="fly-avatar"  href="{{ route('user.home',['id'=>$tie->user->id]) }}">
             @if(Storage::url($tie->user->mdface))
             <img src="{{ Storage::url($tie->user->mdface) }}" alt="{{ $tie->user->name }}">
             @else
@@ -41,7 +41,7 @@
             @endif
           </a>
           <div class="fly-detail-user">
-            <a class="fly-link">
+            <a href="{{ route('user.home',['id'=>$tie->user->id]) }}" class="fly-link">
               <cite>{{ $tie->user->name }}</cite>
               <i class="iconfont icon-renzheng" title="认证信息："></i>
               <i class="layui-badge fly-badge-vip">VIP3</i>
@@ -316,11 +316,11 @@ layui.config({
                     html += '<li data-id="111" class="jieda-daan">\
             <a name="item-1111111111"></a>\
             <div class="detail-about detail-about-reply">\
-              <a class="fly-avatar" href="">\
+              <a class="fly-avatar" href="/home/'+ v.user.id +'">\
                 <img src="/uploads/'+ v.user.mdface +'" alt=" ">\
               </a>\
               <div class="fly-detail-user">\
-                <a href="" class="fly-link">\
+                <a href="/home/'+ v.user.id +'" class="fly-link">\
                   <cite>'+ v.user.name +'</cite>\
                   <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>\
                   <i class="layui-badge fly-badge-vip">VIP3</i>\

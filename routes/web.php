@@ -10,7 +10,7 @@ Route::get('/tie_index','IndexController@tie_index')->name('tie_index');
 //显示个人设置界面
 Route::get('/set','UserController@set')->name('user.set');
 //显示个人主页界面
-Route::get('/home','UserController@home')->name('user.home');
+Route::get('/home/{id}','UserController@home')->name('user.home');
 //显示用户中心界面
 Route::get('/userIndex','UserController@userIndex')->name('user.index');
 //显示用户信息界面

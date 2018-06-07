@@ -20,10 +20,10 @@ class UserController extends Controller
             ]);
         }
         //显示个人主页界面
-        public function home(){
+        public function home($id){
             //查询最近的提问
             $data = DB::table('ties')
-                        ->where('user_id', '=', session('id'))
+                        ->where('user_id', '=', $id)
                         ->orderby('is_jing','desc')
                         ->take(20)
                         ->get();
