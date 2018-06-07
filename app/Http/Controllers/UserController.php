@@ -25,10 +25,12 @@ class UserController extends Controller
             $data = DB::table('ties')
                         ->where('user_id', '=', session('id'))
                         ->orderby('is_jing','desc')
+                        ->take(20)
                         ->get();
             //查询最近的回答
             $reanswer = Discuss::where('user_id',session('id'))
                 ->with('tie')
+                ->take(15)
                 ->get();
             return view('user.home',[
                 'data'=>$data,

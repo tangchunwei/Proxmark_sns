@@ -28,7 +28,7 @@
           @endif
           
           <span class="fly-list-nums"> 
-            <a href="#comment"><i class="iconfont" title="回答">&#xe60c;</i> 66</a>
+            <a href="#comment"><i class="iconfont" title="回答">&#xe60c;</i> {{ $tie->discuss }}</a>
             <i class="iconfont" title="人气">&#xe60b;</i> {{ $tie->display }}
           </span>
         </div>
@@ -41,7 +41,7 @@
             @endif
           </a>
           <div class="fly-detail-user">
-            <a href="../user/home.html" class="fly-link">
+            <a class="fly-link">
               <cite>{{ $tie->user->name }}</cite>
               <i class="iconfont icon-renzheng" title="认证信息："></i>
               <i class="layui-badge fly-badge-vip">VIP3</i>

@@ -75,7 +75,7 @@
           <li>
           <p>
           <span>{{ $value->created_at }}</span>
-          在<a href="" target="_blank">{{ $value->tie->title }}</a>中回答：
+          在<a href="{{ route('tie_detail',['id'=>($value->id)]) }}" target="_blank">{{ $value->tie->title }}</a>中回答：
           </p>
           <div class="home-dacontent">
               {!! clean($value->content) !!}

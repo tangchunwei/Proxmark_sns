@@ -27,7 +27,7 @@
         <a href="http://proxmark.org/forum/index.php" target='_brank'><i class="iconfont icon-jiaoliu"></i>国外社区</a>
       </li>
       <li class="layui-nav-item">
-        <a href="http://proxmark.org" target='_brank'><i class="iconfont icon-iconmingxinganli"></i>淘宝链接</a>
+        <a href="https://shop136874271.taobao.com/?spm=a230r.7195193.1997079397.13.wvmX4t" target='_brank'><i class="iconfont icon-iconmingxinganli"></i>淘宝链接</a>
       </li>
     </ul>
     

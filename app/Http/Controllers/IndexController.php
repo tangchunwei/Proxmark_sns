@@ -33,7 +33,7 @@ class IndexController extends Controller
             
             $top12 = Discuss::select('user_id',DB::raw('count(user_id) as count')) 
                             ->where('created_at','>=',DB::raw('NOW() - INTERVAL 7 DAY'))
-                            ->orderBy(DB::raw(count('user_id')),'desc')
+                            ->orderBy(DB::raw('count(user_id)'),'desc')
                             ->groupBy('user_id')   
                             ->with('user')
                             ->take(12)

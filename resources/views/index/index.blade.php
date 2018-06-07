@@ -38,10 +38,10 @@
               </a>
               <span>{{ $t4->created_at }}</span>
               
-              <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>
-              <span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>
+              {{--<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>
+              <span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>--}}
               <span class="fly-list-nums"> 
-                <i class="iconfont icon-pinglun1" title="回答"></i> 66
+                <i class="iconfont icon-pinglun1" title="回答"></i> {{ $t4->discuss }}
               </span>
             </div>
             <div class="fly-list-badge">
@@ -289,10 +289,10 @@ layui.config({
                         -->\
                       </a>\
                       <span>'+ v.created_at +'</span>  \
-                      <span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>\
+                      <!--<span class="fly-list-kiss layui-hide-xs" title="悬赏飞吻"><i class="iconfont icon-kiss"></i> 60</span>-->\
                       <!--<span class="layui-badge fly-badge-accept layui-hide-xs">已结</span>-->\
                       <span class="fly-list-nums"> \
-                        <i class="iconfont icon-pinglun1" title="回答"></i> 66\
+                        <i class="iconfont icon-pinglun1" title="回答"></i> '+v.discuss+'\
                       </span>\
                     </div>';
                     html += '<div class="fly-list-badge">';
