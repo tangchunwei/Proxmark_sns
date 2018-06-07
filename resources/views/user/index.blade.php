@@ -53,37 +53,34 @@
       <ul class="layui-tab-title" id="LAY_mine">
         <li data-type="mine-jie" lay-id="index" class="layui-this">我发的帖（<span>89</span>）</li>
         <li data-type="collection" data-url="/collection/find/" lay-id="collection">我收藏的帖（<span>16</span>）</li>
+        {{--用户发表的帖子--}}
       </ul>
       <div class="layui-tab-content" style="padding: 20px 0;">
         <div class="layui-tab-item layui-show">
           <ul class="mine-view jie-row">
+              @foreach($data as $value)
             <li>
-              <a class="jie-title" href="../jie/detail.html" target="_blank">基于 layui 的极简社区页面模版</a>
-              <i>2017/3/14 上午8:30:00</i>
-              <a class="mine-edit" href="/jie/edit/8116">编辑</a>
-              <em>661阅/10答</em>
+              <a class="jie-title" href="{{ route('tie_detail',['id'=>($value->id)]) }}" target="_blank">{{ $value->title }}</a>
+              <i>{{ $value->created_at }}</i>
+              <a class="mine-edit" href="">编辑</a>
+              <em>{{ $value->display }}阅/{{ $value->discuss }}答</em>
             </li>
-            <li>
-              <a class="jie-title" href="../jie/detail.html" target="_blank">基于 layui 的极简社区页面模版</a>
-              <i>2017/3/14 上午8:30:00</i>
-              <a class="mine-edit" href="/jie/edit/8116">编辑</a>
-              <em>661阅/10答</em>
-            </li>
-            <li>
-              <a class="jie-title" href="../jie/detail.html" target="_blank">基于 layui 的极简社区页面模版</a>
-              <i>2017/3/14 上午8:30:00</i>
-              <a class="mine-edit" href="/jie/edit/8116">编辑</a>
-              <em>661阅/10答</em>
-            </li>
-          </ul>
+              @endforeach
+
+          {{--用户发表的帖子--}}
           <div id="LAY_page"></div>
         </div>
         <div class="layui-tab-item">
+          {{--用户收藏的帖子--}}
           <ul class="mine-view jie-row">
+              @foreach($Collection as $value)
             <li>
-              <a class="jie-title" href="../jie/detail.html" target="_blank">基于 layui 的极简社区页面模版</a>
-              <i>收藏于23小时前</i>  </li>
+              <a class="jie-title" href="{{ route('tie_detail',['id'=>($value->tie->id)]) }}" target="_blank">{{ $value->tie->title }}</a>
+              <i>收藏于{{ $value->created_at }}</i>
+            </li>
+              @endforeach
           </ul>
+          {{--用户收藏的帖子--}}
           <div id="LAY_page1"></div>
         </div>
       </div>

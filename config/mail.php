@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 25),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'tcwweblover@163.com'),
-        'name' => env('MAIL_FROM_NAME', '测试'),
+        'name' => env('MAIL_FROM_NAME', 'Proxmark3社区'),
     ],
 
     /*
@@ -71,7 +71,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
 
     'username' => env('MAIL_USERNAME','tcwweblover@163.com'),
 
-    'password' => env('MAIL_PASSWORD','13536421305'),
+    'password' => env('MAIL_PASSWORD','19980813509X'),
 
     /*
     |--------------------------------------------------------------------------

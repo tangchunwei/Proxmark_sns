@@ -24,6 +24,10 @@ Route::post('/changepwd', 'PasswordController@changepwd')->name('changepwd');
 // 修改用户信息
 Route::post('/changemessage', 'UserController@changemessage')->name('changemessage');
 
+//邮件发送
+Route::get('/verification','RegistController@verification')->name('verification');
+//邮件令牌检测
+Route::get('/checkverification','RegistController@checkverification')->name('checkverification');
 
 // 发表新帖
 Route::get('/tie_add','TieController@add')->name('tie_add');
