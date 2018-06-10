@@ -356,7 +356,7 @@ body .layui-edit-face  .layui-layer-content{padding:0; background-color:#fff; co
 .jie-admin{cursor: pointer;}
 .detail-hits .jie-admin{color: #fff; padding: 0 10px; }
 .detail-hits .jie-admin a{color: #fff;}
-.jieda-admin{position:absolute; right: 0; top: 4px;}
+.jieda-admin{position:absolute; right: 0; top: -20px;}
 
 /* 回答 */
 .jieda{margin-bottom: 30px;}

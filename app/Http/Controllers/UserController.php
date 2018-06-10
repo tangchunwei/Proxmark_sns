@@ -59,8 +59,27 @@ class UserController extends Controller
         }
         //显示用户信息界面
         public function message(){
-            return view('user.message');
+
+            $user = User::find(session('id'));
+            $name = $user->name;
+            $str = "@".$name;
+            $replys = Discuss::where('content','like','%'.$str.'%')
+                                ->with('user')
+                                ->with('tie')
+                                ->paginate(3);
+
+            return view('user.message',['replys'=>$replys]);
         }
+
+        // 删除回复
+        public function rpy_del(Request $req){
+            
+            $reply = Discuss::find($req->id);
+            $reply->delete();
+
+            return back();
+        }
+
         //显示用户邮箱激活界面
         public function activate(){
             // 显示用户信息到界面

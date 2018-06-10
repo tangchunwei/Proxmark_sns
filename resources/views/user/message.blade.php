@@ -46,23 +46,24 @@
   
   <div class="fly-panel fly-panel-user" pad20>
 	  <div class="layui-tab layui-tab-brief" lay-filter="user" id="LAY_msg" style="margin-top: 15px;">
-	    <button class="layui-btn layui-btn-danger" id="LAY_delallmsg">清空全部消息</button>
+	    
 	    <div  id="LAY_minemsg" style="margin-top: 10px;">
         <!--<div class="fly-none">您暂时没有最新消息</div>-->
         <ul class="mine-msg">
+        @foreach($replys as $r)
           <li data-id="123">
+            <input type="hidden" name="id" class="id" value="{{ $r->id }}">
             <blockquote class="layui-elem-quote">
-              <a href="/jump?username=Absolutely" target="_blank"><cite>Absolutely</cite></a>回答了您的求解<a target="_blank" href="/jie/8153.html/page/0/#item-1489505778669"><cite>layui后台框架</cite></a>
+              
+              用户<a href="{{ route('user.home',['id'=>$r->user->id]) }}" target="_blank"><cite>{{ $r->user->name }}</cite></a>在帖子<a target="_blank" href="{{ route('tie_detail',['id'=>($r->tie->id)]) }}"><cite>{{ $r->tie->title }}</cite></a>中@了您
             </blockquote>
-            <p><span>1小时前</span><a href="javascript:;" class="layui-btn layui-btn-small layui-btn-danger fly-delete">删除</a></p>
+            <p><span>{{ $r->created_at }}</span><a href="javascript:;" class="layui-btn layui-btn-small layui-btn-danger rpy_del">删除</a></p>
           </li>
-          <li data-id="123">
-            <blockquote class="layui-elem-quote">
-              系统消息：欢迎使用 layui
-            </blockquote>
-            <p><span>1小时前</span><a href="javascript:;" class="layui-btn layui-btn-small layui-btn-danger fly-delete">删除</a></p>
-          </li>
+        @endforeach
         </ul>
+        <div style="text-align: center">
+          {{ $replys->links() }}
+        </div>
       </div>
 	  </div>
 	</div>
@@ -78,7 +79,40 @@
     <a href="http://fly.layui.com/jie/2461/" target="_blank">微信公众号</a>
   </p>
 </div>
+<style>
+    
+    .active {
+        background-color: #009E94;
+    }
 
+    .pagination {
+
+        margin-top:35px;
+        padding-bottom:5px;
+    }
+
+    .pagination li {
+
+        display:inline-block;
+        width:42px;
+        border-radius:8px;
+        border: 1px solid #009E94
+    }
+
+    .pagination li a {
+
+        display:inline-block;
+        width:42px;
+        line-height:32px;
+    }
+
+    .pagination li span {
+
+        display:inline-block;
+        line-height:32px;
+    }
+  
+  </style>
 <script src="../../res/layui/layui.js"></script>
 <script>
 layui.cache.page = 'user';
@@ -96,7 +130,17 @@ layui.config({
   fly: 'index'
 }).use('fly');
 </script>
+<script src="/js/jquery.min.js"></script>
+<script>
 
-</body>
-</html>
+    $(".rpy_del").click(function(){
+        var id = $(this).parent().parent().children(".id").val();
+
+        if(confirm("确定要删除？")){
+            
+            location.href="/rpy_del?id="+id;
+        }
+    });
+
+</script>
 @endsection

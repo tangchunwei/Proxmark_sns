@@ -85,3 +85,6 @@ Route::get('/collect','CollectionController@collect')->name('collect');
 // 删除收藏帖子
 Route::get('/collect_del','CollectionController@collect_del')->name('collect_del');
 
+// 删除回复
+Route::get('/rpy_del','UserController@rpy_del')->name('rpy_del');
+

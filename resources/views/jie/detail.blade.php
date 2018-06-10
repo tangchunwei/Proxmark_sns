@@ -75,7 +75,7 @@
             <div class="layui-form-item layui-form-text">
               <a name="comment"></a>
               <div class="layui-input-block">
-                <textarea id="discuss" name="discuss" placeholder="请输入内容" style="height: 150px;"></textarea>
+                <textarea id="discuss" name="discuss" placeholder="请输入内容" style="height: 150px;width:730px;"></textarea>
               </div>
             </div>
             <div class="layui-form-item">
@@ -147,20 +147,6 @@
     }
 
 </style>
-
-<link href="/ueditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="/ueditor/third-party/jquery.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="/ueditor/umeditor.config.js"></script>
-<script type="text/javascript" charset="utf-8" src="/ueditor/umeditor.min.js"></script>
-<script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
-
-<!-- 编辑器源码文件 -->
-<script>
-UM.getEditor('discuss', {
-	initialFrameWidth:"100%",
-	initialFrameHeight:"150"
-});
-</script>
 
 <script src="../../res/layui/layui.js"></script>
 <script>
@@ -333,25 +319,18 @@ layui.config({
               </div>\
             <div class="detail-body jieda-body photos">'+ v.content +'</div>\
             <div class="jieda-reply">\
-              <span class="jieda-zan zanok" type="zan">\
-                <i class="iconfont icon-zan"></i>\
-                <em>66</em>\
-              </span>\
-              <span type="reply">\
-                <i class="iconfont icon-svgmoban53"></i>\
-                回复\
-              </span>\
               <div class="jieda-admin">\
-                <span type="edit">编辑</span>\
-                <span type="del">删除</span>\
-                <!-- <span class="jieda-accept" type="accept">采纳</span> -->\
+                <span>\
+                  <i class="iconfont icon-svgmoban53"></i>\
+                  回复\
+                </span>\
               </div>\
             </div>\
           </li>';         
                   });
 
                   // 显示到页面中
-                  $(".jieda").append(html);
+                  $(".jieda").append(html); 
 
                   allow = true;
                   img.remove();
@@ -402,7 +381,6 @@ layui.config({
                 dataType:"json",
                 success:function(data){
                    
-                    $(".edui-body-container").html('');
                     $("textarea[name=discuss]").val('');
                 }
             });

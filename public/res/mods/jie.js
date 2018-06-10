@@ -226,9 +226,12 @@ layui.define('fly', function(exports){
   };
 
   $('.jieda-reply span').on('click', function(){
-    var othis = $(this), type = othis.attr('type');
-    gather.jiedaActive[type].call(this, othis.parents('li'));
-  });
+
+    var username = $(this).parent().parent().parent().children('.detail-about').children('.fly-detail-user').children('.fly-link').children('cite').html();
+    $("#discuss").val('@'+username+" ");
+    $("#discuss").focus();
+    
+});
 
 
   //定位分页
