@@ -53,8 +53,8 @@
       <li class="layui-nav-item">
         <a class="fly-nav-avatar" href="javascript:;">
           <cite class="layui-hide-xs">{{ session('name') }}</cite>
-          <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：Proxmark3 作者"></i>
-          <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i>
+          <!-- <i class="iconfont icon-renzheng layui-hide-xs" title="认证信息：Proxmark3 作者"></i>
+          <i class="layui-badge fly-badge-vip layui-hide-xs">VIP3</i> -->
           @if(session('smface'))
           <img src="{{ Storage::url(session('smface')) }}">
           @else

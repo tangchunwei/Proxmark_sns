@@ -33,8 +33,8 @@
             <div class="fly-list-info">
               <a href="{{ route('user.home',['id'=>$t4->user->id]) }}" link>
                 <cite>{{ $t4->user->name }}</cite>
-                <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
-                <i class="layui-badge fly-badge-vip">VIP3</i>
+                <!-- <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
+                <i class="layui-badge fly-badge-vip">VIP3</i> -->
               </a>
               <span>{{ $t4->created_at }}</span>
               

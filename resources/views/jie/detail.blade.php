@@ -43,8 +43,8 @@
           <div class="fly-detail-user">
             <a href="{{ route('user.home',['id'=>$tie->user->id]) }}" class="fly-link">
               <cite>{{ $tie->user->name }}</cite>
-              <i class="iconfont icon-renzheng" title="认证信息："></i>
-              <i class="layui-badge fly-badge-vip">VIP3</i>
+              <!-- <i class="iconfont icon-renzheng" title="认证信息："></i>
+              <i class="layui-badge fly-badge-vip">VIP3</i> -->
             </a>
             
           </div>
@@ -308,11 +308,12 @@ layui.config({
               <div class="fly-detail-user">\
                 <a href="/home/'+ v.user.id +'" class="fly-link">\
                   <cite>'+ v.user.name +'</cite>\
-                  <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>\
-                  <i class="layui-badge fly-badge-vip">VIP3</i>\
-                </a> \
-                <span>(楼主)</span>\
-              </div>\
+                </a>';
+                if(v.user.id=={{ $tie->user->id }}){
+
+                  html += '<span>(楼主)</span>';
+                }
+                html += '</div>\
               <div class="detail-hits">\
                 <span>'+ v.created_at +'</span>\
               </div>\
